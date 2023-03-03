@@ -1,0 +1,31 @@
+<form [formGroup]="formEmployee" (ngSubmit)="submit()">
+
+  <div class="form-group">
+
+    <label for="Nom">Nom employee</label>
+    <input  formControlName="employeeFirstName" class="form-control" type="text">
+  </div>
+<!--[ngClass]="{'is-valid' : submitted && f.employeeFirstName.errors}" erreur angular 15 n'accepte pas les propriétés employeeFirstName -->
+  <div class="form-group">
+    <label for="Prenom">Prenom</label>
+    <input formControlName = "employeeLastName" class="form-control" type="text">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Numero de telephone</label>
+    <input formControlName="employeePhoneNumber" class="form-control" type="text">
+  </div>
+
+  <div class="form-group">
+    <label for="departments">Departement</label>
+  <select formControlName="departmentId" class="form-control" name="" id="">
+    <option  *ngFor="let d of lisDepartments" value="{{d.id}}">{{d.departmentName}}</option>
+  </select>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-outline-success mt-2" >Enovyer</button>
+  </div>
+
+
+</form>

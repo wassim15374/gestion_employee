@@ -1,0 +1,55 @@
+<table class="table">
+
+  <thead>
+    <th>#</th>
+    <th>Nom </th>
+    <th>prenom </th>
+     <th>Le numero de phone </th>
+     <th>Le numero de departement </th>
+     <th>action</th>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let e of listEmployees">
+     <td>{{e.id}}</td>
+     <td> {{e.employeeFirstName}} </td>
+     <td> {{e.employeeLastName}} </td>
+     <td> {{e.employeePhone}} </td>
+     <td> {{e.departement.departmentName}} </td>
+     <td>
+      <div class="row">
+       <div class="col">
+        <button class="btn btn-sm fa fa-edit btn-outline-info">Modifier</button>
+
+       </div>
+       <div class="col">
+        <button (click)="onDelete(e.id)" class="btn btn-sm fa fa-remove btn-outline-danger">Supprimer</button>
+       </div>
+      </div>
+     </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls
+ previousLabel="Precedent"
+ nextLabel="Suivant"
+ [responsive]="true"
+ (pageChange)="handlePageChange($event)">
+</pagination-controls>
+
+<ul>
+
+  <li class="list-group-item"
+  *ngFor="let e of listEmployees | paginate :{
+    itemsPerPage : PAGESIZE,
+    currentPage : PAGE,
+    totalItems : count
+    }; let i = index"
+  [class.active] = "i === CURRENTINDEX"
+  >
+  </li>
+
+
+</ul>
